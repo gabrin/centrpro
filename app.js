@@ -52,4 +52,4 @@ centrpro.get(/^\/(index.html)?/, function(req, res) {
   res.render('index');
 });
 
-centrpro.listen(process.env.PORT || 5000);
+centrpro.listen(process.env.PORT || 80);
