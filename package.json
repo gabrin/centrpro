@@ -1,8 +1,8 @@
 {
-  "name": "gabrinsearch",
-  "version": "0.1.0",
+  "name": "centrpro",
+  "version": "0.0.1",
   "private": true,
-  "description": "a google mirror server.",
+  "description": "centrpro main page.",
   "main": "app.js",
   "dependencies": {
     "express": "4.*",
@@ -11,9 +11,9 @@
   },
   "devDependencies": {},
   "keywords": [
-    "google",
-    "mirror"
+    "centrpro",
+    "search"
   ],
-  "author": "iSayme",
+  "author": "Gabidullin Rinat",
   "license": "MIT"
 }
