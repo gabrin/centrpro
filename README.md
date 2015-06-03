@@ -1,3 +1,9 @@
+
 Centrpro main page
-'npm install'
-'node app.js'
+
+1. [Node.js](http://nodejs.org/);
+2. `npm install`;
+3. `node app.js`.
+
+
+
