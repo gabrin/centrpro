@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+  <title>search@centrpro</title>
+
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+			jQuery(document).ready(function($) {
+				$("input").focus();
+
+				$.get("http://ipinfo.io", function(response) {
+					$(".country").html('\u00A0' + response.country);
+				}, "jsonp");
+
+			});
+
+</script>
+<script type="text/javascript">
+        $(function () {
+            $('#query')
+          .focus(function () { this.select(); })
+          .mouseup(function (e) { e.preventDefault(); })
+          .autocomplete({
+              position: { my: "left top", at: "left bottom", offset: "0, 5", collision: "none" },
+              source: function (request, response) {
+                  $.ajax({
+                      url: "https://clients1.google.com/complete/search?q=" + request.term + "&hl=en&client=partner&source=gcsc&partnerid=000686474741928011237:5og56crijbk&ds=cse&nocache=" + Math.random().toString(),
+                      dataType: "jsonp",
+                      success: function (data) {
+                          response($.map(data[1], function (item) {
+                              return {
+                                  label: item[0],
+                                  value: item[0]
+                              };
+                          }));
+                      }
+                  });
+              },
+              autoFill: true,
+              minChars: 0,
+              select: function (event, ui) {
+                  $(this).closest('input').val(ui.item.value);
+                  $(this).closest('form').trigger('submit');
+              }
+          });
+        });
+
+
+
+</script>
+<div id="logo">
+  <div class="name">
+        <span class="C">C</span><span class="entr">e</span><span class="entr">n</span><span class="entr">t</span><span class="ENTR">r</span><span class="PRO">PRO</span>
+   </div>
+</div>
+		<form method="get" action="/search">
+			<label>Для профессионалов строительства</label><br>
+			<input type="text" name="q" size="31" value="" placeholder="поиск" autocomplete="off" id="query">
+			<span class="country">&nbsp;</span>
+			<span class="city">&nbsp;</span>
+			<label for="tobeTranslated">Наберите в строке поиска запрос</label>
+</form>
+
+
+
+  <script>
+    var sInput = document.getElementById("query");
+    var sBtn = document.getElementById("s-btn");
+    sInput.onkeypress = function(ev) {
+      if (13 == ev.keyCode) {
+        sBtn.click();
+        return false;
+      }
+
+    };
+
+  </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter29203630 = new Ya.Metrika({id:29203630,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/29203630" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
